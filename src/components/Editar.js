@@ -4,15 +4,36 @@ import TodoContext from '../context/TodoContext'
 import EliminarTodo from './EliminarTodo'
 import {useModal} from '../hooks'
 import { Select } from 'antd'
+import moment from 'moment'
+
+
 const {Option} = Select
 
 const Editar = ({todo,indice ,closeEdit, showModal}) =>{
     const [ showDelete, openDelete, closeDelete ] = useModal()
     const context = useContext(TodoContext)
     console.log(context)
+    
+    const cerrareliminar = () =>{
+        closeDelete()
+        closeEdit()
+    }
+    
+    todo.endDate = moment(todo.endDate)
+  
     const [form] = Form.useForm()
     const editTodo = e =>{
+
+        /*const  formValues = form.getFieldsValue()
+        console.log(formValues)
+       const date = formValues.endDate ? formValues.endDate.format('DD-MM-YYYY') : undefined 
+        console.log(date)
+        formValues.endDate = date*/
+       // console.log(formValues)
+        
+        console.log(form.getFieldsValue())
         context.updateTodo (indice, form.getFieldsValue())
+  
         closeEdit()
     }   
       return(
@@ -37,7 +58,7 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
             <Button onClick={openDelete}>
                 Eliminar
             </Button>,
-            <EliminarTodo showModal={showDelete} closeModal={closeDelete}indice={indice} ></EliminarTodo>
+            <EliminarTodo showModal={showDelete} closeModal={cerrareliminar}indice={indice} ></EliminarTodo>
 
         ]}
         >
@@ -57,9 +78,9 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
                 </Form.Item> 
                 <Form.Item
             label='Pendiente' 
-            name='pendiente' >
+            name='status' >
             
-            <Select initialValues={todo} style={{ width: 120 }} >
+            <Select style={{ width: 120 }} >
                  <Option value="pendiente">Pendiente</Option>
                   <Option value="realizado">Realizado</Option>
 
@@ -69,11 +90,11 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
   
                 
                 <Form.Item
-                    label='Date'
-                    name='date'
-                >
-                    <DatePicker ></DatePicker>
-                </Form.Item>
+                        label='Date'
+                        name='endDate'
+                    >
+                        <DatePicker ></DatePicker>
+                    </Form.Item>
             </Form>
     </Modal>
     

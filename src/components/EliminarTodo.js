@@ -13,6 +13,7 @@ const Eliminar = ({
 
     const eliminarTodo = () => {
         removeTodo(indice)
+        closeModal()
     }
 
     return (

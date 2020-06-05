@@ -23,6 +23,8 @@ const TodoPage = (props) => {
             ...nuevoTodoList[indice],
             ...nuevoTodo
         }
+        console.log(nuevoTodo)
+        console.log(updatedTodo)
         nuevoTodoList[indice] = updatedTodo
         setTodoItems(nuevoTodoList)
         console.log(updatedTodo)
@@ -50,6 +52,7 @@ const TodoPage = (props) => {
             .then(res => res.json())
             .then(res => {
                 console.log("res", res)
+                
             })
     }
 
