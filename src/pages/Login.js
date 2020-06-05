@@ -1,17 +1,45 @@
 import React , {useContext, useState} from 'react'
 import UserContext from '../context/UserContext'
 import { Form, Input, Button } from 'antd'
+import { useHistory } from 'react-router-dom'
 
 
 const API_ROUTE = 'https://pwa-postgre.herokuapp.com'
 
 const RegisterForm = (props) => {
-    const [form] = Form.useForm()
+    const [form] = Form.useForm()  
+    const history = useHistory()
 
     const handleRegister = values => {
     
         console.log('Submit')
-        console.log(values)
+        const {username, mail, password} = values
+        const newUser = {
+            username,
+            email: mail,
+            password
+        }
+        fetch(`${API_ROUTE}/register`, {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        }
+            
+            ).then(res => res.json())
+            .then(user => {
+                console.log(user)
+                if(user) {
+                    history.push('/')
+                }
+            }).catch(err => {
+                console.log('F')
+            })
+
+    
+
+
     }
 
     console.log('Form', form)
