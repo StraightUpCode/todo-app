@@ -17,13 +17,13 @@ const TodoItem = ({ todo, indice }) => {
 
     const date = moment(todo.endDate).format('DD-MM-YYYY')
 
-
     return (
         // <div className="col-md-4 mt-4">
         <div id="todo1" class="card todo  ">
             <div id="cuerpecito" className="  blockquote card-body text-center">
                 <div class="h3">{`${todo.todo}`}</div>
                 <div class=" h6   my-3 ">{date}</div>
+                <div class="h5">{`${todo.status}`}</div>
                 <hr class="my-2"></hr>
                 {
                     `${todo.descripcion}`

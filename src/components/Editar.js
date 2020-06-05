@@ -3,7 +3,8 @@ import {Form, Modal, Button, Input, DatePicker} from 'antd'
 import TodoContext from '../context/TodoContext'
 import EliminarTodo from './EliminarTodo'
 import {useModal} from '../hooks'
-
+import { Select } from 'antd'
+const {Option} = Select
 
 const Editar = ({todo,indice ,closeEdit, showModal}) =>{
     const [ showDelete, openDelete, closeDelete ] = useModal()
@@ -58,12 +59,11 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
             label='Pendiente' 
             name='pendiente' >
             
-                <Input type="radio" name="estado" value="notdone"/>
-                </Form.Item> 
-                <Form.Item
-            label='Realizada' 
-            name='Realizada'>
-                <Input type="radio" name="estado" value="done"/>
+            <Select initialValues={todo} style={{ width: 120 }} >
+                 <Option value="pendiente">Pendiente</Option>
+                  <Option value="realizado">Realizado</Option>
+
+                    </Select>
                 </Form.Item> 
   
   
