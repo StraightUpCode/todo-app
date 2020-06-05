@@ -25,7 +25,7 @@ function App() {
 
   const logOutUser = x => {
     setUser()
-    history.push('/')
+    history.push('/login')
   }
   
   return (
