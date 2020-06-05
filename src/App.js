@@ -14,7 +14,7 @@ const TodoPage = React.lazy(()=> import('./pages/TodoPage'))
 const LoginPage = React.lazy(()=> import('./pages/Login'))
 
 function App() {
-  const [user, setUser] = useState(1)
+  const [user, setUser] = useState()
   const history = useHistory()
   console.log(history)
   const logInUser = user => {
