@@ -10,7 +10,7 @@ function TodoItems({todos=[]}) {
   
   return (
     <div className="container">
-      <div className="card-columns mt-4">
+      <div className="row mt-4">
       {
         todos.map((todo, indice)=><TodoItem todo={todo} indice={indice}></TodoItem>)
       }

@@ -18,8 +18,8 @@ const TodoItem = ({ todo, indice }) => {
     const date = moment(todo.endDate).format('DD-MM-YYYY')
 
     return (
-       // <div className="col-md-4 mt-4">
-        <div id="todo1" class="card todo  ">
+        <div className="col-md-4 mb-4">
+        <div id="todo1" class="card mt-4 todo  ">
             <div id="cuerpecito" className="  blockquote card-body text-center">
                 <div class="h3">{`${todo.todo}`}</div>
                 <div class=" h6   my-3 ">{date}</div>
@@ -36,7 +36,7 @@ const TodoItem = ({ todo, indice }) => {
 
             </div>
         </div>
-        // </div>
+         </div>
     )
 
 }
