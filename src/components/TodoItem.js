@@ -11,14 +11,14 @@ const TodoItem = ({ todo, indice }) => {
     const [showEdit, openEdit, closeEdit] = useModal()
 
     const [showDelete, openDelete, closeDelete] = useModal()
-
+    console.log(todo)
 
     console.log('Show Edit Modal', showEdit)
 
     const date = moment(todo.endDate).format('DD-MM-YYYY')
 
     return (
-        // <div className="col-md-4 mt-4">
+       // <div className="col-md-4 mt-4">
         <div id="todo1" class="card todo  ">
             <div id="cuerpecito" className="  blockquote card-body text-center">
                 <div class="h3">{`${todo.todo}`}</div>
@@ -37,7 +37,6 @@ const TodoItem = ({ todo, indice }) => {
             </div>
         </div>
         // </div>
-
     )
 
 }

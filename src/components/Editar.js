@@ -13,7 +13,7 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
     const [ showDelete, openDelete, closeDelete ] = useModal()
     const context = useContext(TodoContext)
     console.log(context)
-    
+    console.log(todo)
     const cerrareliminar = () =>{
         closeDelete()
         closeEdit()
@@ -63,8 +63,11 @@ const Editar = ({todo,indice ,closeEdit, showModal}) =>{
         ]}
         >
             <Form form={form}
-             onFinish={editTodo}
-             initialValues={todo}>
+                onFinish={editTodo}
+                initialValues={(()=>{
+                    console.log('Valores del Form  ',todo)
+                    return todo
+                })()}>
             <Form.Item
             label='Todo' 
             name='todo'>
